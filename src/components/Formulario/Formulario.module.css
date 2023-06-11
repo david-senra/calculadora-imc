@@ -1,0 +1,70 @@
+.formulario {
+    border: solid 2px #000;
+    border-radius: 10px;
+}
+
+.texto {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: 20px;
+    align-items: flex-end;
+}
+
+.select {
+    text-align: center;
+    margin-right: 20px;
+    font-size: 24px;
+    line-height: 34px;
+    width: 200px;
+}
+
+.input {
+    font-size: 24px;
+    width: 90px;
+    line-height: 34px;
+}
+
+.notacao {
+    margin-left: 5px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.button_div{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.button_submit {
+    background-color: rgb(2, 140, 2);
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    width: 120px;
+    line-height: 40px;
+    border-radius: 5px;
+    border-color: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button_submit:hover {
+    background-color: rgb(2, 122, 2);
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+}
