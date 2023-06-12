@@ -16,15 +16,12 @@ const Formulario = () => {
     
     useEffect(
         () => {
-            console.log(peso);
-            console.log(altura);
-            console.log(parseFloat(altura).toFixed(2));
-            console.log(parseFloat(altura) > 0);
             peso > 0 && peso < 300 && altura > 0 && altura < 300 && (setDadosPreenchidos(true));
             peso == '' && (setDadosPreenchidos(false));
             altura == '' && (setDadosPreenchidos(false));
             altura > 300 && (setDadosPreenchidos(false));
             peso > 300 && (setDadosPreenchidos(false));
+            altura.length < 4 && (setDadosPreenchidos(false));
             setAbrirResultados(false);
         }, [altura, peso]
     )
