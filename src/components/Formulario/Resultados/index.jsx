@@ -17,7 +17,7 @@ const Resultado = ({ altura, peso }) => {
     return (
         <div className='container'>
             <div className={styles.resultado}>
-                <h2 className={styles.texto}>O IMC calculado foi de: <span className={styles.spam}>{calculoIMC}</span>.</h2>
+                <h2 className={styles.texto}>O IMC calculado foi de: <span className={styles.spam}>{(calculoIMC.toString()).replace('.',',')}</span>.</h2>
                 <h2 className={styles.texto}>Este IMC está classificado como <span className={styles.spam}>{avaliacaoIMC(calculoIMC)}</span>.</h2>
             </div>
         </div>

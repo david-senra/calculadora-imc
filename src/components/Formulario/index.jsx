@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import InputMask from 'react-input-mask';
+
 import styles from './Formulario.module.css';
 import Resultado from './Resultados'
 
@@ -14,19 +16,27 @@ const Formulario = () => {
     
     useEffect(
         () => {
-            peso > 0 && peso < 300 && altura > 0 && altura < 3 && (setDadosPreenchidos(true));
+            console.log(peso);
+            console.log(altura);
+            console.log(parseFloat(altura).toFixed(2));
+            console.log(parseFloat(altura) > 0);
+            peso > 0 && peso < 300 && altura > 0 && altura < 300 && (setDadosPreenchidos(true));
             peso == '' && (setDadosPreenchidos(false));
             altura == '' && (setDadosPreenchidos(false));
-            altura > 3 && (setDadosPreenchidos(false));
+            altura > 300 && (setDadosPreenchidos(false));
             peso > 300 && (setDadosPreenchidos(false));
             setAbrirResultados(false);
         }, [altura, peso]
     )
 
     const gerarResultado = () => {
+        console.log(altura);
+        console.log(peso);
         setAlturaCalculo(altura);
         setPesoCalculo(peso);
         setAbrirResultados(true)
+        console.log(alturaCalculo);
+        console.log(pesoCalculo);
     }
 
     function validaPeso (evento) {        
@@ -39,13 +49,10 @@ const Formulario = () => {
     };
 
     function validaAltura (evento) {
-        evento.key !== ',' && evento.key !== '.' && evento.key !== 'Backspace' && isNaN(evento.key) && (evento.preventDefault());
-        evento.target.value.length >= 4 && evento.key !== 'Backspace' && (evento.preventDefault());
-        evento.target.value.length == 2 && evento.key !== 'Backspace' && (evento.target.value = evento.target.value.charAt(0) + "," + evento.target.value.charAt(1))
+        evento.target.value == "" && evento.key !== '0' && evento.key !== '1' && evento.key !== '2' && (evento.preventDefault());
 
-        if (evento.target.value > 3 && evento.key !== 'Backspace') {
-            evento.preventDefault();
-        }
+        evento.key !== ',' && evento.key !== 'Backspace' && isNaN(evento.key) && (evento.preventDefault());
+        evento.target.value.length > 4 && evento.key !== 'Backspace' && (evento.preventDefault());
     };
 
     return (
@@ -53,7 +60,7 @@ const Formulario = () => {
             <div className={styles.formulario}>
                 <h2 className={styles.texto}>Insira os dados e clique em "Calcular" para calcular o IMC</h2>
                 <form className={styles.form}>
-                    <input className={styles.input} maxLength={3} type='number' placeholder='Altura:' onChange={(e) => setAltura(e.target.value)} onKeyDown={(e) => validaAltura(e)}/>
+                    <InputMask mask='9,99' maskChar={''} className={styles.input} placeholder="Altura:" onChange={(e) => setAltura(e.target.value.replace(',', '.'))} onKeyDown={(e) => validaAltura(e)}/>
                     <h4 className={styles.notacao}>m</h4>
                     <input className={styles.input} maxLength={5} type='number' placeholder='Peso:' onChange={(e) => setPeso(e.target.value)} onKeyDown={(e) => validaPeso(e)}/>
                     <h4 className={styles.notacao}>Kg</h4>
